@@ -1,0 +1,33 @@
+{
+  "name": "riprisintin",
+  "version": "0.1.0",
+  "description": "Riprisintin Slick Slish Cimmind",
+  "engines": {
+    "node": "9.9.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "tape ./tests/*.test.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "tape": "^4.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jazcarate/riprisintin"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express",
+    "riprisintin"
+  ],
+  "license": "MIT"
+}
