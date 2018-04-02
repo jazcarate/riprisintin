@@ -1,2 +1,2 @@
-cd /vagrant/app
+cd /vagrant/
 yarn

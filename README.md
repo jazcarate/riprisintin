@@ -2,3 +2,6 @@
 
 # Development
 `vagrant up` => `cd /vagrant/app` => `yarn start`
+
+# In Heroku
+`docker-compose build`

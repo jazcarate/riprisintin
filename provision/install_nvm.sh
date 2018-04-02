@@ -3,5 +3,5 @@ source ~/.nvm/nvm.sh
 echo "source ~/.nvm/nvm.sh" >> ~/.bashrc
 
 echo "Installing node.js..."
-nvm install 9.9.0 &> /dev/null
+nvm install 9.9.0
 nvm alias default 9.9.0
