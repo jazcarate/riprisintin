@@ -1,1 +1,1 @@
-web: node index.js
+web: cd aoo && node index.js

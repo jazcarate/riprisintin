@@ -1,0 +1,2 @@
+cd /vagrant/app
+yarn

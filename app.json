@@ -2,6 +2,5 @@
   "name": "Riprisintin Slack Slash Command",
   "description": "Riprisintin Slick Slish Cimmind",
   "repository": "https://github.com/jazcarate/riprisintin",
-  "keywords": ["node", "express", "heroku", "riprisintin"],
-  "image": "heroku/nodejs"
+  "keywords": ["node", "express", "heroku", "riprisintin"]
 }
