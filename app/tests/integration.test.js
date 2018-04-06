@@ -10,7 +10,11 @@ test('can render an image', (t) => {
   t.plan(4);
 
   child.stdout.on('data', _ => {
-    request('http://localhost:5000/test/', (error, response, body) => {
+    request.post({
+      url: 'http://localhost:5000/test',
+      method: 'POST',
+      json: {'text': 'this is a test'}
+    }, (error, response, body) => {
       child.kill();
 
       t.false(error);
