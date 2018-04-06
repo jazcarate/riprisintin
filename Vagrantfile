@@ -15,6 +15,5 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, path: 'provision/install_os.sh'
   config.vm.provision :shell, path: 'provision/install_docker.sh'
   config.vm.provision :shell, path: 'provision/install_nvm.sh', keep_color: true, privileged: false
-  config.vm.provision :shell, path: 'provision/install_yarn.sh', keep_color: true, privileged: false
-  config.vm.provision :shell, path: 'provision/install_deps.sh', keep_color: true, privileged: false
+  config.vm.provision :shell, path: 'provision/install_yarn.sh'
 end

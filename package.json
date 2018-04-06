@@ -2,17 +2,14 @@
   "name": "riprisintin",
   "version": "0.1.0",
   "description": "Riprisintin Slick Slish Cimmind",
-  "engines": {
-    "node": "9.9.0"
-  },
-  "main": "index.js",
+  "main": "app/index.js",
   "scripts": {
     "start": "node ./app/index.js",
     "test": "tape ./app/tests/*.test.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
-    "canvas": "^2.0.0-alpha.12",
+    "canvas": "^2.0.0-alpha.10",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
     "fs-extra": "^5.0.0",
