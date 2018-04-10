@@ -2,17 +2,25 @@ const test = require('tape');
 const riprisintin = require('../src/riprisintin');
 
 test('it should replace all vowers with "i"s', function (t) {
-  const result = riprisintin('Testing some sentence')
+  const result = riprisintin('testing some sentence')
 
   t.ok(result)
-  t.deepEqual(result, "Tisting simi sintinci")
+  t.deepEqual(result, "tisting simi sintinci")
   t.end()
 });
 
-test('it should keep the vowel\'s upper-caseness', function (t) {
-  const result = riprisintin('And so it is')
+test('it should keep the U in QU', function (t) {
+  const result = riprisintin('Estu es lo que queres?')
 
   t.ok(result)
-  t.deepEqual(result, "Ind si it is")
+  t.deepEqual(result, "isti is li qui quiris?")
+  t.end()
+});
+
+test('it should even replace tildes', function (t) {
+  const result = riprisintin('Vós dècïs')
+
+  t.ok(result)
+  t.deepEqual(result, "vís dìcïs")
   t.end()
 });
