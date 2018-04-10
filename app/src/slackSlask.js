@@ -10,11 +10,12 @@ function meta(body){
     };
 }
 
-function build_answer(imageUrl){
+function build_answer(text, author, imageUrl){
     return {
         "response_type": "in_channel",
         "attachments": [{
-            "fallback": imageUrl,
+            "fallback": text,
+            "author_name": author,
             "image_url": `${URL}img/${imageUrl}`
         }]
     };
@@ -31,7 +32,7 @@ module.exports = function(imageUrl){
             request({
                 url:     req.body.response_url,
                 method:  'POST',
-                json:    build_answer(imgUrl)
+                json:    build_answer(req.body.text, req.body.user_name, imgUrl)
             }, function (error, response, body) {
                 if(error)
                     console.log("Error:", error);
