@@ -9,25 +9,19 @@ function drawMeme(ctx, height, width, top, botom) {
     ctx.mutterLine = 2;
     ctx.fillStyle = 'white';
     ctx.textAlign = 'center';
+    x = width / 2;
 
     ctx.textBaseline = 'top';
-    var text1 = top;
-    text1 = text1.toUpperCase();
-    x = width / 2;
     y = 0;
-    wrapText(ctx, text1, x, y, width, 1.6, false, 50);
+    wrapText(ctx, top.toUpperCase(), x, y, width, 1.6, false, 50);
 
     ctx.textBaseline = 'bottom';
-    var text1 = botom;
-    text1 = text1.toUpperCase();
     y = height;
-    wrapText(ctx, text1, x, y, width, 1.6, true, 50);
+    wrapText(ctx, botom.toUpperCase(), x, y, width, 1.6, true, 50);
 }
 
 function wrapText(context, text, x, y, maxWidth, lineHeightRatio, fromBottom, fontSize) {
     context.font = 'bold ' + fontSize + 'pt Impact';
-    // If from the bottom, use unshift so the lines can be added to the top of the array.
-    // Required since the lines at the bottom are laid out from bottom up.
     var pushMethod = (fromBottom) ? 'unshift' : 'push';
 
     _lineHeightRatio = (fromBottom) ? -lineHeightRatio : lineHeightRatio;
@@ -53,10 +47,8 @@ function wrapText(context, text, x, y, maxWidth, lineHeightRatio, fromBottom, fo
     lines[pushMethod](line);
 
     if (lines.length > 2) {
-        console.log('Too big.', fontSize);
         wrapText(context, text, x, y, maxWidth, lineHeightRatio, fromBottom, fontSize - 10);
-    }
-    else {
+    } else {
         for (var k in lines) {
             context.strokeText(lines[k], x, y + lineHeight * k);
             context.fillText(lines[k], x, y + lineHeight * k);
@@ -84,7 +76,5 @@ module.exports = function (config) {
             drawMeme(context, canvas.height, canvas.width, opts.top, opts.bottom);
             return canvas;
         });
-        
-        //return canvas.toBuffer();
     });
 };
