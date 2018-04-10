@@ -1,5 +1,3 @@
-before_install: cd app
-
 language: node_js
 node_js:
   - "9.9.0"
