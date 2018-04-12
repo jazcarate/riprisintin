@@ -2,7 +2,7 @@ const request = require('request').defaults({ encoding: null });
 const { createCanvas, loadImage } = require('canvas')
 const randomMeme = require('./randomMeme');
 
-function drawMeme(ctx, height, width, top, botom) {
+function drawMeme(ctx, height, width, text) {
     ctx.lineWidth = 8;
     ctx.font = 'bold 50pt Impact';
     ctx.strokeStyle = 'black';
@@ -13,11 +13,11 @@ function drawMeme(ctx, height, width, top, botom) {
 
     ctx.textBaseline = 'top';
     y = 0;
-    wrapText(ctx, top.toUpperCase(), x, y, width, 1.6, false, 50);
+    wrapText(ctx, text.top.toUpperCase(), x, y, width, 1.6, false, 50);
 
     ctx.textBaseline = 'bottom';
     y = height;
-    wrapText(ctx, botom.toUpperCase(), x, y, width, 1.6, true, 50);
+    wrapText(ctx, text.bottom.toUpperCase(), x, y, width, 1.6, true, 50);
 }
 
 function wrapText(context, text, x, y, maxWidth, lineHeightRatio, fromBottom, fontSize) {
@@ -57,24 +57,16 @@ function wrapText(context, text, x, y, maxWidth, lineHeightRatio, fromBottom, fo
 
 }
 
-module.exports = function (config) {
-    var defaults = {
-        top: '',
-        bottom: ''
-    };
-    var opts = Object.assign({}, defaults, config);
-
-    var that = this;
-
+module.exports = function (text) {
     return randomMeme().then((imageSrc) => {
         return loadImage(imageSrc).then((image) => {
             var canvas = createCanvas(image.width, image.height);
             context = canvas.getContext('2d');
             context.drawImage(image, 0, 0);
-            return canvas
+            return canvas;
         }).then((canvas) => {
-            drawMeme(context, canvas.height, canvas.width, opts.top, opts.bottom);
+            drawMeme(context, canvas.height, canvas.width, text);
             return canvas;
         });
     });
-};
+}
