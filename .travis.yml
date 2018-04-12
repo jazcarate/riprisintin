@@ -1,3 +1,11 @@
-language: node_js
-node_js:
-  - "9.9.0"
+sudo: required
+
+services:
+  - docker
+
+before_install:
+- docker build -t riprisintin .
+- docker ps -a
+
+script:
+- docker run riprisintin /bin/sh -c "yarn test"
