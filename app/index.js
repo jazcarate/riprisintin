@@ -20,9 +20,6 @@ function replyImg(res, img){
   res.send(img);
 }
 
-
-
-
 function test(req, res){
   return Promise.resolve(req.body.text)
                 .then(riprisintin)
@@ -31,7 +28,7 @@ function test(req, res){
                 .then((canvas) => replyImg(res, canvas.toBuffer()));
 }
 
-function imageUrl(text){
+function generateImageURL(text){
   return Promise.resolve(text)
                 .then(riprisintin)
                 .then(split)
@@ -46,6 +43,6 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('main'))
-  .post('/generate', slackSlash(imageUrl))
+  .post('/generate', slackSlash(generateImageURL))
   .post('/test', (req, res) => test(req, res))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))

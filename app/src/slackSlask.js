@@ -14,21 +14,20 @@ function build_answer(text, author, imageUrl){
     return {
         "response_type": "in_channel",
         "attachments": [{
-            "fallback": text,
-            "author_name": author,
-            "image_url": `${URL}img/${imageUrl}`
+            "fallback": `iify [${text}]`,
+            "image_url": imageUrl
         }]
     };
   }
 
-module.exports = function(imageUrl){
+module.exports = function(generateImageURL){
     return function(req, res) {
         if(req.body.token != TOKEN){
             res.send('Hmmmmm.... algo no está bien');
             return;
         }
 
-        imageUrl(req.body.text).then((imgUrl) => {
+        generateImageURL(req.body.text).then((imgUrl) => {
             request({
                 url:     req.body.response_url,
                 method:  'POST',
